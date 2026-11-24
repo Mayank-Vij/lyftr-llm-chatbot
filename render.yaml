@@ -1,0 +1,25 @@
+# Render blueprint for the backend (the frontend goes to Vercel/Netlify/Cloudflare Pages).
+# Persistent disks need a paid instance; on the free tier remove `disk` and the SQLite
+# file lives on ephemeral storage (history resets on redeploy/restart).
+services:
+  - type: web
+    name: llm-chatbot-backend
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    healthCheckPath: /health
+    envVars:
+      - key: LLM_API_KEYS
+        sync: false
+      - key: LLM_MODEL
+        value: gemini/gemini-2.0-flash
+      - key: ALLOWED_ORIGINS
+        sync: false
+      - key: ENABLE_FAILURE_SIMULATION
+        value: "true"
+      - key: DATABASE_URL
+        value: sqlite:////data/app.db
+    # disk:
+    #   name: app-data
+    #   mountPath: /data
+    #   sizeGB: 1

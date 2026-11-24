@@ -1,0 +1,6 @@
+fastapi>=0.110,<1
+uvicorn[standard]>=0.29
+# Pinned: this release still ships LiteLLM's disk cache backend and has all
+# runtime dependencies on the cache-hit path.
+litellm==1.74.9
+diskcache>=5.6
