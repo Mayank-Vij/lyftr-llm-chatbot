@@ -130,7 +130,6 @@ SQLite persistence, 422/404 and CORS.
 
 - Editor / agent: Claude (Anthropic) via Claude Code-style agentic workflow; Vite for the frontend build.
 - Libraries: FastAPI, LiteLLM 1.74.9 (pinned), diskcache, pytest, React 18.
-- Fill in your own editor and any other AI tools you used.
 
 ## 6. Bonus features
 
